@@ -106,6 +106,91 @@ You might notice the **Confidence Gauge** moves every time you hit Sync. This is
 
 ---
 
+---
+
+## 📈 Strategy Deep Dive: Professional Execution
+
+### 1. The Short Iron Condor (Sideways/Income)
+**Objective**: Profit from time decay (Theta) when Nifty stays in a range.
+
+```mermaid
+graph TD
+    A[Whipsaw > 55% AND Regime = Sideways] --> B{Check Probability Cone}
+    B --> C[Sell OTM Call @ 90% Probability Level]
+    B --> D[Sell OTM Put @ 10% Probability Level]
+    C --> E[Buy Further OTM Call for Hedge]
+    D --> F[Buy Further OTM Put for Hedge]
+    E & F --> G[Profit as time passes and Nifty stays between levels]
+```
+
+- **Selection**: Look at David's **80% Probability Cone**.
+- **The Wings**: Sell strikes at the edges (10% and 90% lines). Buy strikes 100-200 points further out to cap risk.
+- **Theta is King**: Best taken on **Monday/Tuesday** for the weekly expiry.
+
+### 2. Bull/Bear Spreads (Directional Conviction)
+**Objective**: Capture a 5-day move with a "Cushion" for safety.
+
+- **Entry**: Only when **Confidence > 60%** and **Whipsaw < 35%**.
+- **Structure (Bull)**: Buy 1 At-the-Money (ATM) Call + Sell 1 Out-of-the-Money (OTM) Call.
+- **Structure (Bear)**: Buy 1 ATM Put + Sell 1 OTM Put.
+- **Why?**: If David says "UP" but the market wiggles down 50 points first, your "Sold" option loses value faster than your "Bought" one, protecting your capital.
+
+---
+
+## 🔄 The Trade Lifecycle (Rules of Engagement)
+
+```mermaid
+sequenceDiagram
+    participant D as David Oracle
+    participant T as Trader (You)
+    participant M as Market
+    Note over D,T: Analysis Phase (3:15 PM)
+    T->>D: Check Stability (3-4 Refreshes)
+    D-->>T: Signal: UP, Conf: 65%, Whipsaw: 28%
+    Note over T,M: Entry Phase (3:25 PM)
+    T->>M: Enter Bull Call Spread for next week
+    Note over M,T: Management Phase
+    M->>T: Price moves...
+    T->>D: Daily Check (3:15 PM)
+    alt David stays STABLE
+        T->>M: Hold Position
+    else David flips to STRONG BEAR
+        T->>M: EXIT EARLY (Cut losses)
+    end
+    Note over T,M: Exit Phase
+    T->>M: Close @ 50% Profit OR Expiry
+```
+
+### 📋 Rules to Live By:
+1.  **Entry Window**: 3:15 PM – 3:28 PM IST. Never enter in the morning "Noise."
+2.  **Profit Target**: 50% of maximum possible profit. Don't be greedy.
+3.  **Stop Loss**: If David flips **strongly** against you (e.g., UP flips to >60% DOWN) and stays there for 2 refreshes.
+
+---
+
+## 🧠 Trading Psychology: Managing "The Machine"
+
+### What to do if David is "Wrong"?
+Predictions are probabilities, not promises. Even at 70% confidence, David will be **wrong 3 out of 10 times**.
+
+**1. Convince Yourself with Data, Not Ego:**
+When a trade goes red, don't say "The AI is stupid." Instead, check the data:
+- Is the **Whipsaw** spiking? (If yes, the market is being irrational/noisy).
+- Is the **S&P 500** crashing? (David might have missed a global black swan).
+- Did the **Confidence** drop? (If yes, David is admitting he's less sure now).
+
+**2. Building Systematic Conviction:**
+- **The Law of 100 Trades**: Don't judge the system on one trade. Judge it on 100. If David is right 65% of the time over 100 trades, you will be very wealthy—even if you lose the next 3 in a row.
+- **Systematic vs. Emotional**: If you manualy "override" David because you're scared, and David turns out to be right, you've lost more than money—you've lost your process. **Trust the math over the mood.**
+
+**3. The "Wrong" Checklist:**
+If it shows UP but goes DOWN:
+- [ ] Check if the **Regime** changed.
+- [ ] Check if **VIX** spiked > 10% (Panic).
+- [ ] If rules are met, **EXIT**. No "Hoping." No "Waiting."
+
+---
+
 ## 🛡️ Pro-Tips for "War Time" (High VIX > 18)
 1. **Widen Your Wings**: High VIX means price moves 2x faster. Give your trades more room to breathe.
 2. **Probability is Key**: In war time, "Confidence" becomes more important. Never take an "UP" signal if confidence is below 55% while VIX is high.
